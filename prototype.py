@@ -56,7 +56,7 @@ while trial <= trials:
 
     x_np = np.linspace(start=1, stop=10, num=1000)
     y_np = {
-        "Linear": np.polyval(p=[1, 1], x=x_np),
+        "Linear": np.polyval(p=[1, 0], x=x_np),
         "Quadratic": np.polyval(p=[1, 1, 0], x=x_np),
         "Cubic": np.polyval(p=[1, 1, 1, 0], x=x_np),
         "Rational":  1 / np.polyval(p=[1, 0], x=x_np),
