@@ -18,7 +18,6 @@ available = [
     "Logarithmic",
     "Trigonometric",
     "Hyperbolic",
-    "Piecewise"
 ]
 
 while True:
@@ -46,9 +45,9 @@ while trial <= trials:
             super().__init__()
 
             self.net = nn.Sequential(
-                nn.Linear(1, 16),
+                nn.Linear(1, 32),
                 nn.LeakyReLU(), 
-                nn.Linear(16, 1), 
+                nn.Linear(32, 1), 
             )
     
         def forward(self, input):
@@ -57,20 +56,15 @@ while trial <= trials:
 
     x_np = np.linspace(start=1, stop=10, num=1000)
     y_np = {
-        "Linear": np.polyval(p=[1, 0], x=x_np),
-        "Quadratic": np.polyval(p=[1, 0, 0], x=x_np),
-        "Cubic": np.polyval(p=[1, 0, 0, 0], x=x_np),
+        "Linear": np.polyval(p=[1, 1], x=x_np),
+        "Quadratic": np.polyval(p=[1, 1, 0], x=x_np),
+        "Cubic": np.polyval(p=[1, 1, 1, 0], x=x_np),
         "Rational":  1 / np.polyval(p=[1, 0], x=x_np),
         "Exponential": np.exp(x_np),
         "Radical": np.sqrt(x_np),
         "Logarithmic": np.log(x_np),
         "Trigonometric": np.sin(x_np),
         "Hyperbolic": np.sinh(x_np),
-        "Piecewise": np.piecewise(
-            x_np, 
-            [ x_np < 5, x_np >= 5 ], 
-            [ lambda x: np.polyval(p=[1, 0], x=x), lambda x: np.polyval(p=[1, 0, 0], x=x)]
-        )
     }
 
     x = torch.tensor(data=x_np, dtype=torch.float32)
@@ -104,6 +98,6 @@ while trial <= trials:
     results.append(epochs)
     trial += 1
 
-print(f"Here are the results! Please send them to Robertson.\n{results}\n")
+print(f"Here are the results! Please copy.\n{results}\n")
 input("Thank you for using the prototype! Press ENTER to exit!")
 input("Are you sure you want to exit? Press ENTER again!")
