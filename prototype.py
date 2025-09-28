@@ -8,9 +8,9 @@ def RR(y_true, y_pred):
     SS_tot = torch.sum((y_true - torch.mean(y_true)) ** 2)
     return 1 - SS_res/SS_tot
 
-exit = "Y"
+exit = "N"
 
-while exit == "Y":
+while exit == "N":
     available = [
         "Linear",
         "Quadratic",
