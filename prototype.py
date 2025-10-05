@@ -67,7 +67,7 @@ while exit == "N":
 
                     self.net = nn.Sequential(
                         nn.Linear(1, perceptron_count),
-                        nn.ReLU(), 
+                        nn.LeakyReLU(), 
                         nn.Linear(perceptron_count, 1), 
                     )
     
@@ -129,14 +129,14 @@ while exit == "N":
                 print(f"INTERRUPTED AT TRIAL#{trial}\n")
                 break
             
-
-    mean = np.mean(results)
-    residuals = [(result - mean)**2 for result in results]
-    variance = np.mean(residuals)
-    std_var = np.sqrt(variance)
-    print(f"Here are the results! Please copy.\n{results}\n")
-    print(f"FUNCTION: {function}, PERCEPTRONS: {perceptron_count}, TRIALS COMPLETED: {len(results)}/{trials}")
-    print(f"MEAN: {mean}, VAR: {variance}, STD_VAR: {std_var}\n")
+    if results:
+        mean = np.mean(results)
+        residuals = [(result - mean)**2 for result in results]
+        variance = np.mean(residuals)
+        std_var = np.sqrt(variance)
+        print(f"Here are the results! Please copy.\n{results}\n")
+        print(f"FUNCTION: {function}, PERCEPTRONS: {perceptron_count}, TRIALS COMPLETED: {len(results)}/{trials}")
+        print(f"MEAN: {mean}, VAR: {variance}, STD_VAR: {std_var}\n")
 
     while True:
         prompt = input(">>>Would you like to exit? Please type 'Y' or 'N'.\n")
