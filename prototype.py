@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-
+  
 def RR(y_true, y_pred):
     SS_res = torch.sum((y_true - y_pred) ** 2)
     SS_tot = torch.sum((y_true - torch.mean(y_true)) ** 2)
@@ -67,7 +67,7 @@ while exit == "N":
 
                     self.net = nn.Sequential(
                         nn.Linear(1, perceptron_count),
-                        nn.LeakyReLU(), 
+                        nn.Sigmoid(), 
                         nn.Linear(perceptron_count, 1), 
                     )
     
@@ -94,7 +94,7 @@ while exit == "N":
             y_dataset = y.unsqueeze(1)
 
             loss_function = nn.MSELoss()
-            optimizer = optim.Adam(params=model.parameters(), lr=0.1)
+            optimizer = optim.Adam(params=model.parameters(), lr=0.05)
 
             epochs = 0
             while epochs < 1_000_000:
@@ -111,7 +111,7 @@ while exit == "N":
                 loss.backward()
                 optimizer.step()
 
-                if (epochs + 1) % 10 == 0:
+                if epochs % 10 == 0:
                     print(f"EPOCH:{epochs}, LOSS:{loss.item():.6f}, R^2:{r2 * 100:.6f}% - CTRL+C TO EXIT!")
 
             print(f">FUNCTION TYPE: {function}")
