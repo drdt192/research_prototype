@@ -112,7 +112,7 @@ while exit == "N":
             y_dataset = y.unsqueeze(1)
             
             #Slowly shifts the learning rate 
-            optimizer = optim.Adam(params=model.parameters(), lr=0.05)
+            optimizer = optim.Adam(params=model.parameters(), lr=0.01)
 
             epochs = 0
             #initiate main training loop
