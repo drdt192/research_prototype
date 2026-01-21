@@ -1,0 +1,1 @@
+move all console based i/o into tkinter
