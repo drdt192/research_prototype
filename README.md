@@ -6,4 +6,3 @@ As you open the file, you should wait at maximum 1 minute and keep clicking the 
 
 As it was packaged using pyinstaller, it has to extract the dependencies into a temporary file, hence the delay.
 
-made by drdt192, all feedbacks accepted
