@@ -41,8 +41,7 @@ scalar_types = {
 activation_types = {
     "LeakyReLU": nn.LeakyReLU,
     "GELU": nn.GELU,
-    "ELU": nn.ELU,
-    "Softmax": nn.Softmax
+    "Swish": nn.SiLU
 }
 
 #initiates tkinter window (for saving the file)
